@@ -144,7 +144,7 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
         const customItemService = container.resolve<CustomItemService>("CustomItemService");
 
         //Example of adding new item by cloning existing item using createclonedetails
-        const WeaponModsCase: NewItemFromCloneDetails = {
+        const weaponModCaseItem: NewItemFromCloneDetails = {
             itemTplToClone: "5aafbde786f774389d0cbc0f", //the item we want to clone
             overrideProperties: {
                 Width: 3,
@@ -197,7 +197,7 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
             }
         };
 
-        const ThiccWeaponModsCase: NewItemFromCloneDetails = {
+        const thiccWeaponModCaseItem: NewItemFromCloneDetails = {
             itemTplToClone: "5aafbde786f774389d0cbc0f", //the item we want to clone
             overrideProperties: {
                 Width: 4,
@@ -250,7 +250,7 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
             }
         };
 
-        const EquipmentCase: NewItemFromCloneDetails = {
+        const equipmentCaseItem: NewItemFromCloneDetails = {
             itemTplToClone: "567143bf4bdc2d1a0f8b4567", //the item we want to clone
             overrideProperties: {
                 Width: 4,
@@ -304,9 +304,9 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
                 }
             }
         };
-        customItemService.createItemFromClone(WeaponModsCase);
-        customItemService.createItemFromClone(ThiccWeaponModsCase);
-        customItemService.createItemFromClone(EquipmentCase);
+        customItemService.createItemFromClone(weaponModCaseItem);
+        customItemService.createItemFromClone(thiccWeaponModCaseItem);
+        customItemService.createItemFromClone(equipmentCaseItem);
 
         this.addAssorts();
     }
