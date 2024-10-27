@@ -141,7 +141,7 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
     public postDBLoad(container: DependencyContainer): void {
         // Resolve the CustomItemService container
         this.databaseServer = container.resolve<DatabaseServer>("DatabaseServer");
-        const CustomItem = container.resolve<CustomItemService>("CustomItemService");
+        const customItemService = container.resolve<CustomItemService>("CustomItemService");
 
         //Example of adding new item by cloning existing item using createclonedetails
         const WeaponModsCase: NewItemFromCloneDetails = {
@@ -304,9 +304,9 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
                 }
             }
         };
-        CustomItem.createItemFromClone(WeaponModsCase);
-        CustomItem.createItemFromClone(ThiccWeaponModsCase);
-        CustomItem.createItemFromClone(EquipmentCase);
+        customItemService.createItemFromClone(WeaponModsCase);
+        customItemService.createItemFromClone(ThiccWeaponModsCase);
+        customItemService.createItemFromClone(EquipmentCase);
 
         this.addAssorts();
     }
