@@ -12,14 +12,14 @@ import { Traders } from "@spt/models/enums/Traders";
 
 enum CurrencyIds {
     EUROS = "569668774bdc2da2298b4568",
-    PHYSICAL_BITCOIN = "59faff1d86f7746c51718c9c",
-    ROUBLES = "5449016a4bdc2d6f028b456f"
+    ROUBLES = "5449016a4bdc2d6f028b456f",
+    PHYSICAL_BITCOIN = "59faff1d86f7746c51718c9c"
 }
 
 enum CustomItemIds {
     WEAPON_MODS_CASE = "WeaponModsCase",
     THICC_WEAPON_MODS_CASE = "ThiccWeaponModsCase",
-    EQUIPMENT_CASE = ""
+    EQUIPMENT_CASE = "EquipmentCase"
 }
 
 enum AssortmentIds {
@@ -31,7 +31,7 @@ enum AssortmentIds {
 enum BarterIds {
     WEAPON_MODS_CASE = "assort_weaponmodscase_barter_0",
     THICC_WEAPON_MODS_CASE = "assort_thiccweaponmodscase_barter_0",
-    EQUIPMENT_CASE = ""
+    EQUIPMENT_CASE = "assort_equipmentcase_barter_0"
 }
 
 class Mod implements IPostDBLoadMod, IPostSptLoadMod {
@@ -69,7 +69,7 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
 
         const thiccWeaponModsCaseBarter: Item = {
             _id: BarterIds.THICC_WEAPON_MODS_CASE,
-            _tpl: AssortmentIds.THICC_WEAPON_MODS_CASE, // L'ID del template dell'oggetto che vuoi aggiungere (ad es. ID di un'arma, armatura, ecc.)
+            _tpl: CustomItemIds.THICC_WEAPON_MODS_CASE, // L'ID del template dell'oggetto che vuoi aggiungere (ad es. ID di un'arma, armatura, ecc.)
             parentId: "hideout",
             slotId: "hideout",
             upd: { StackObjectsCount: 1 } // Quantità dell'oggetto
@@ -84,7 +84,7 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
         };
 
         const equipmentCaseBarter: Item = {
-            _id: AssortmentIds.EQUIPMENT_CASE,
+            _id: BarterIds.EQUIPMENT_CASE,
             _tpl: CustomItemIds.EQUIPMENT_CASE, // L'ID del template dell'oggetto che vuoi aggiungere (ad es. ID di un'arma, armatura, ecc.)
             parentId: "hideout",
             slotId: "hideout",
