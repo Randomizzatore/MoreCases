@@ -10,7 +10,29 @@ import { IBarterScheme, ITraderAssort } from "@spt/models/eft/common/tables/ITra
 import { Item } from "@spt/models/eft/common/tables/IItem";
 import { Traders } from "@spt/models/enums/Traders";
 
+enum CurrencyIds {
+    EUROS = "569668774bdc2da2298b4568",
+    PHYSICAL_BITCOIN = "59faff1d86f7746c51718c9c",
+    ROUBLES = "5449016a4bdc2d6f028b456f"
+}
 
+enum CustomItemIds {
+    WEAPON_MODS_CASE = "WeaponModsCase",
+    THICC_WEAPON_MODS_CASE = "ThiccWeaponModsCase",
+    EQUIPMENT_CASE = ""
+}
+
+enum AssortmentIds {
+    WEAPON_MODS_CASE = "assort_weaponmodscase_0",
+    THICC_WEAPON_MODS_CASE = "assort_thiccweaponmodscase_0",
+    EQUIPMENT_CASE = "assort_equipmentcase_0"
+}
+
+enum BarterIds {
+    WEAPON_MODS_CASE = "assort_weaponmodscase_barter_0",
+    THICC_WEAPON_MODS_CASE = "assort_thiccweaponmodscase_barter_0",
+    EQUIPMENT_CASE = ""
+}
 
 class Mod implements IPostDBLoadMod, IPostSptLoadMod {
     private logger: Logger;
@@ -22,48 +44,48 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
         const ragmanAssort: ITraderAssort = this.databaseServer.getTables().traders[Traders.RAGMAN].assort;
         // Nuovo oggetto da aggiungere
         const weaponModsCase: Item = {
-            _id: "assort_weaponmodscase_0",
-            _tpl: "WeaponModsCase", // L'ID del template dell'oggetto che vuoi aggiungere (ad es. ID di un'arma, armatura, ecc.)
+            _id: AssortmentIds.WEAPON_MODS_CASE,
+            _tpl: CustomItemIds.WEAPON_MODS_CASE, // L'ID del template dell'oggetto che vuoi aggiungere (ad es. ID di un'arma, armatura, ecc.)
             parentId: "hideout",
             slotId: "hideout",
             upd: { StackObjectsCount: 1 } // Quantità dell'oggetto
         };
 
         const weaponModsCaseBarter: Item = {
-            _id: "assort_weaponmodscase_barter_0",
-            _tpl: "WeaponModsCase", // L'ID del template dell'oggetto che vuoi aggiungere (ad es. ID di un'arma, armatura, ecc.)
+            _id: BarterIds.WEAPON_MODS_CASE,
+            _tpl: CustomItemIds.WEAPON_MODS_CASE, // L'ID del template dell'oggetto che vuoi aggiungere (ad es. ID di un'arma, armatura, ecc.)
             parentId: "hideout",
             slotId: "hideout",
             upd: { StackObjectsCount: 1 } // Quantità dell'oggetto
         }
 
         const thiccWeaponModsCase: Item = {
-            _id: "assort_thiccweaponmodscase_0",
-            _tpl: "ThiccWeaponModsCase", // L'ID del template dell'oggetto che vuoi aggiungere (ad es. ID di un'arma, armatura, ecc.)
+            _id: AssortmentIds.THICC_WEAPON_MODS_CASE,
+            _tpl: CustomItemIds.THICC_WEAPON_MODS_CASE, // L'ID del template dell'oggetto che vuoi aggiungere (ad es. ID di un'arma, armatura, ecc.)
             parentId: "hideout",
             slotId: "hideout",
             upd: { StackObjectsCount: 1 } // Quantità dell'oggetto
         };
 
         const thiccWeaponModsCaseBarter: Item = {
-            _id: "assort_thiccweaponmodscase_barter_0",
-            _tpl: "ThiccWeaponModsCase", // L'ID del template dell'oggetto che vuoi aggiungere (ad es. ID di un'arma, armatura, ecc.)
+            _id: BarterIds.THICC_WEAPON_MODS_CASE,
+            _tpl: AssortmentIds.THICC_WEAPON_MODS_CASE, // L'ID del template dell'oggetto che vuoi aggiungere (ad es. ID di un'arma, armatura, ecc.)
             parentId: "hideout",
             slotId: "hideout",
             upd: { StackObjectsCount: 1 } // Quantità dell'oggetto
         };
 
         const equipmentCase: Item = {
-            _id: "assort_equipmentcase_0",
-            _tpl: "EquipmentCase", // L'ID del template dell'oggetto che vuoi aggiungere (ad es. ID di un'arma, armatura, ecc.)
+            _id: AssortmentIds.EQUIPMENT_CASE,
+            _tpl: CustomItemIds.EQUIPMENT_CASE, // L'ID del template dell'oggetto che vuoi aggiungere (ad es. ID di un'arma, armatura, ecc.)
             parentId: "hideout",
             slotId: "hideout",
             upd: { StackObjectsCount: 1 } // Quantità dell'oggetto
         };
 
         const equipmentCaseBarter: Item = {
-            _id: "assort_equipmentcase_barter_0",
-            _tpl: "EquipmentCase", // L'ID del template dell'oggetto che vuoi aggiungere (ad es. ID di un'arma, armatura, ecc.)
+            _id: AssortmentIds.EQUIPMENT_CASE,
+            _tpl: CustomItemIds.EQUIPMENT_CASE, // L'ID del template dell'oggetto che vuoi aggiungere (ad es. ID di un'arma, armatura, ecc.)
             parentId: "hideout",
             slotId: "hideout",
             upd: { StackObjectsCount: 1 } // Quantità dell'oggetto
@@ -72,27 +94,27 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
         // Prezzo dell'oggetto
         const weaponModsCasePrice: IBarterScheme = {
             count: 9800, // Prezzo in rubli, o altri tipi di valuta
-            _tpl: "569668774bdc2da2298b4568" // ID della valuta (es. Rubli)
+            _tpl: CurrencyIds.EUROS // ID della valuta (es. Rubli)
         };
 
         const weaponModsCaseBarterRequirements: IBarterScheme = {
             count: 3, // Numero di oggetti richiesti per il barter
-            _tpl: "59faff1d86f7746c51718c9c" // Template ID del primo oggetto richiesto
+            _tpl: CurrencyIds.PHYSICAL_BITCOIN // Template ID del primo oggetto richiesto
         }
 
         const thiccWeaponModsCasePrice: IBarterScheme = {
             count: 60000, // Prezzo in rubli, o altri tipi di valuta
-            _tpl: "569668774bdc2da2298b4568" // ID della valuta (es. Rubli)
+            _tpl: CurrencyIds.EUROS // ID della valuta (es. Rubli)
         };
 
         const thiccWeaponModsCaseBarterRequirements: IBarterScheme = {
             count: 10, // Numero di oggetti richiesti per il barter
-            _tpl: "59faff1d86f7746c51718c9c" // Template ID del primo oggetto richiesto
+            _tpl: CurrencyIds.PHYSICAL_BITCOIN // Template ID del primo oggetto richiesto
         }
 
         const equipmentCasePrice: IBarterScheme = {
             count: 6789123, // Prezzo in rubli, o altri tipi di valuta
-            _tpl: "5449016a4bdc2d6f028b456f" // ID della valuta (es. Rubli)
+            _tpl: CurrencyIds.ROUBLES // ID della valuta (es. Rubli)
         };
 
         const equipmentCaseBarterRequirements: IBarterScheme[] = [
@@ -159,7 +181,7 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
                     {
                         _name: "main",
                         _id: "weaponmodscasegrid",
-                        _parent: "WeaponModsCase",
+                        _parent: CustomItemIds.WEAPON_MODS_CASE,
                         _props: {
                             filters: [
                                 {
@@ -184,7 +206,7 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
 
             }, //Overried properties basically tell the server on what data inside _props to be modified from the cloned item
             parentId: "5795f317245977243854e041", //ParentId refers to the Node item the gun will be under, you can check it in https://db.sp-tarkov.com/search
-            newId: "WeaponModsCase", //The new id of our cloned item
+            newId: CustomItemIds.WEAPON_MODS_CASE, //The new id of our cloned item
             fleaPriceRoubles: 1000000, //Self explanatary
             handbookPriceRoubles: 1000000,
             handbookParentId: "5b5f6fa186f77409407a7eb7", //Handbook Parent Id refers to the category the gun will be under
@@ -212,7 +234,7 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
                     {
                         _name: "main",
                         _id: "thiccweaponmodscasegrid",
-                        _parent: "WeaponModsCase",
+                        _parent: CustomItemIds.WEAPON_MODS_CASE,
                         _props: {
                             filters: [
                                 {
@@ -237,7 +259,7 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
 
             }, //Overried properties basically tell the server on what data inside _props to be modified from the cloned item
             parentId: "5795f317245977243854e041", //ParentId refers to the Node item the gun will be under, you can check it in https://db.sp-tarkov.com/search
-            newId: "ThiccWeaponModsCase", //The new id of our cloned item
+            newId: CustomItemIds.THICC_WEAPON_MODS_CASE, //The new id of our cloned item
             fleaPriceRoubles: 9809800, //Self explanatary
             handbookPriceRoubles: 9809800,
             handbookParentId: "5b5f6fa186f77409407a7eb7", //Handbook Parent Id refers to the category the gun will be under
@@ -265,7 +287,7 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
                     {
                         _name: "main",
                         _id: "gearcasegrid",
-                        _parent: "EquipmentCase",
+                        _parent: CustomItemIds.EQUIPMENT_CASE,
                         _props: {
                             filters: [
                                 {
@@ -292,7 +314,7 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
 
             }, //Overried properties basically tell the server on what data inside _props to be modified from the cloned item
             parentId: "5795f317245977243854e041", //ParentId refers to the Node item the gun will be under, you can check it in https://db.sp-tarkov.com/search
-            newId: "EquipmentCase", //The new id of our cloned item
+            newId: CustomItemIds.EQUIPMENT_CASE, //The new id of our cloned item
             fleaPriceRoubles: 6789123, //Self explanatary
             handbookPriceRoubles: 6789123,
             handbookParentId: "5b5f6fa186f77409407a7eb7", //Handbook Parent Id refers to the category the gun will be under
