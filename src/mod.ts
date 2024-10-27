@@ -7,8 +7,8 @@ import { IPostSptLoadMod } from "@spt/models/external/IPostSptLoadMod";
 import { DatabaseServer } from "@spt/servers/DatabaseServer";
 import { Logger } from "winston";
 import { IBarterScheme, ITraderAssort } from "@spt/models/eft/common/tables/ITrader";
-import { ITemplateItem } from "@spt/models/eft/common/tables/ITemplateItem";
 import { Item } from "@spt/models/eft/common/tables/IItem";
+import { Traders } from "@spt/models/enums/Traders";
 
 class Mod implements IPostDBLoadMod, IPostSptLoadMod {
 
@@ -17,8 +17,8 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
 
     public addAssorts(): void {
         // Recupera l'assortimento del trader Mechanic
-        const mechanicAssort: ITraderAssort = this.databaseServer.getTables().traders["5a7c2eca46aef81a7ca2145d"].assort;
-        const ragmanAssort: ITraderAssort = this.databaseServer.getTables().traders["5ac3b934156ae10c4430e83c"].assort;
+        const mechanicAssort: ITraderAssort = this.databaseServer.getTables().traders[Traders.MECHANIC].assort;
+        const ragmanAssort: ITraderAssort = this.databaseServer.getTables().traders[Traders.RAGMAN].assort;
         // Nuovo oggetto da aggiungere
         const weaponModsCase: Item = {
             _id: "assort_weaponmodscase_0",
