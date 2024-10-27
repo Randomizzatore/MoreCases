@@ -6,7 +6,9 @@ import { NewItemFromCloneDetails } from "@spt/models/spt/mod/NewItemDetails";
 import { IPostSptLoadMod } from "@spt/models/external/IPostSptLoadMod";
 import { DatabaseServer } from "@spt/servers/DatabaseServer";
 import { Logger } from "winston";
-import { ITraderAssort } from "@spt/models/eft/common/tables/ITrader";
+import { IBarterScheme, ITraderAssort } from "@spt/models/eft/common/tables/ITrader";
+import { ITemplateItem } from "@spt/models/eft/common/tables/ITemplateItem";
+import { Item } from "@spt/models/eft/common/tables/IItem";
 
 class Mod implements IPostDBLoadMod, IPostSptLoadMod {
 
@@ -18,7 +20,7 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
         const mechanicAssort: ITraderAssort = this.databaseServer.getTables().traders["5a7c2eca46aef81a7ca2145d"].assort;
         const ragmanAssort: ITraderAssort = this.databaseServer.getTables().traders["5ac3b934156ae10c4430e83c"].assort;
         // Nuovo oggetto da aggiungere
-        const weaponModsCase = {
+        const weaponModsCase: Item = {
             _id: "assort_weaponmodscase_0",
             _tpl: "WeaponModsCase", // L'ID del template dell'oggetto che vuoi aggiungere (ad es. ID di un'arma, armatura, ecc.)
             parentId: "hideout",
@@ -26,7 +28,7 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
             upd: { StackObjectsCount: 1 } // Quantità dell'oggetto
         };
 
-        const weaponModsCaseBarter = {
+        const weaponModsCaseBarter: Item = {
             _id: "assort_weaponmodscase_barter_0",
             _tpl: "WeaponModsCase", // L'ID del template dell'oggetto che vuoi aggiungere (ad es. ID di un'arma, armatura, ecc.)
             parentId: "hideout",
@@ -34,7 +36,7 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
             upd: { StackObjectsCount: 1 } // Quantità dell'oggetto
         }
 
-        const thiccWeaponModsCase = {
+        const thiccWeaponModsCase: Item = {
             _id: "assort_thiccweaponmodscase_0",
             _tpl: "ThiccWeaponModsCase", // L'ID del template dell'oggetto che vuoi aggiungere (ad es. ID di un'arma, armatura, ecc.)
             parentId: "hideout",
@@ -42,7 +44,7 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
             upd: { StackObjectsCount: 1 } // Quantità dell'oggetto
         };
 
-        const thiccWeaponModsCaseBarter = {
+        const thiccWeaponModsCaseBarter: Item = {
             _id: "assort_thiccweaponmodscase_barter_0",
             _tpl: "ThiccWeaponModsCase", // L'ID del template dell'oggetto che vuoi aggiungere (ad es. ID di un'arma, armatura, ecc.)
             parentId: "hideout",
@@ -50,7 +52,7 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
             upd: { StackObjectsCount: 1 } // Quantità dell'oggetto
         };
 
-        const equipmentCase = {
+        const equipmentCase: Item = {
             _id: "assort_equipmentcase_0",
             _tpl: "EquipmentCase", // L'ID del template dell'oggetto che vuoi aggiungere (ad es. ID di un'arma, armatura, ecc.)
             parentId: "hideout",
@@ -58,7 +60,7 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
             upd: { StackObjectsCount: 1 } // Quantità dell'oggetto
         };
 
-        const equipmentCaseBarter = {
+        const equipmentCaseBarter: Item = {
             _id: "assort_equipmentcase_barter_0",
             _tpl: "EquipmentCase", // L'ID del template dell'oggetto che vuoi aggiungere (ad es. ID di un'arma, armatura, ecc.)
             parentId: "hideout",
@@ -67,35 +69,35 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
         };
 
         // Prezzo dell'oggetto
-        const weaponModsCasePrice = {
-            _id: "assort_weaponmodscase_0_price",
+        const weaponModsCasePrice: IBarterScheme = {
+            // _id: "assort_weaponmodscase_0_price",
             count: 9800, // Prezzo in rubli, o altri tipi di valuta
             _tpl: "569668774bdc2da2298b4568" // ID della valuta (es. Rubli)
         };
 
-        const weaponModsCaseBarterRequirements = {
+        const weaponModsCaseBarterRequirements: IBarterScheme = {
             count: 3, // Numero di oggetti richiesti per il barter
             _tpl: "59faff1d86f7746c51718c9c" // Template ID del primo oggetto richiesto
         }
 
-        const thiccWeaponModsCasePrice = {
-            _id: "assort_thiccweaponmodscase_0_price",
+        const thiccWeaponModsCasePrice: IBarterScheme = {
+            // _id: "assort_thiccweaponmodscase_0_price",
             count: 60000, // Prezzo in rubli, o altri tipi di valuta
             _tpl: "569668774bdc2da2298b4568" // ID della valuta (es. Rubli)
         };
 
-        const thiccWeaponModsCaseBarterRequirements = {
+        const thiccWeaponModsCaseBarterRequirements: IBarterScheme = {
             count: 10, // Numero di oggetti richiesti per il barter
             _tpl: "59faff1d86f7746c51718c9c" // Template ID del primo oggetto richiesto
         }
 
-        const equipmentCasePrice = {
-            _id: "assort_equipmentcase_0_price",
+        const equipmentCasePrice: IBarterScheme = {
+            // _id: "assort_equipmentcase_0_price",
             count: 6789123, // Prezzo in rubli, o altri tipi di valuta
             _tpl: "5449016a4bdc2d6f028b456f" // ID della valuta (es. Rubli)
         };
 
-        const equipmentCaseBarterRequirements = [
+        const equipmentCaseBarterRequirements: IBarterScheme[] = [
             {
                 count: 8, // Numero di oggetti richiesti per il barter
                 _tpl: "60bf74184a63fc79b60c57f6" // Template ID del primo oggetto richiesto
