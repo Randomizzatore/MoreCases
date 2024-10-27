@@ -70,7 +70,6 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
 
         // Prezzo dell'oggetto
         const weaponModsCasePrice: IBarterScheme = {
-            // _id: "assort_weaponmodscase_0_price",
             count: 9800, // Prezzo in rubli, o altri tipi di valuta
             _tpl: "569668774bdc2da2298b4568" // ID della valuta (es. Rubli)
         };
@@ -81,7 +80,6 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
         }
 
         const thiccWeaponModsCasePrice: IBarterScheme = {
-            // _id: "assort_thiccweaponmodscase_0_price",
             count: 60000, // Prezzo in rubli, o altri tipi di valuta
             _tpl: "569668774bdc2da2298b4568" // ID della valuta (es. Rubli)
         };
@@ -92,7 +90,6 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
         }
 
         const equipmentCasePrice: IBarterScheme = {
-            // _id: "assort_equipmentcase_0_price",
             count: 6789123, // Prezzo in rubli, o altri tipi di valuta
             _tpl: "5449016a4bdc2d6f028b456f" // ID della valuta (es. Rubli)
         };
