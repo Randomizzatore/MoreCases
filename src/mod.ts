@@ -10,8 +10,9 @@ import { IBarterScheme, ITraderAssort } from "@spt/models/eft/common/tables/ITra
 import { Item } from "@spt/models/eft/common/tables/IItem";
 import { Traders } from "@spt/models/enums/Traders";
 
-class Mod implements IPostDBLoadMod, IPostSptLoadMod {
 
+
+class Mod implements IPostDBLoadMod, IPostSptLoadMod {
     private logger: Logger;
     private databaseServer: DatabaseServer;
 
@@ -144,7 +145,7 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
         const customItemService = container.resolve<CustomItemService>("CustomItemService");
 
         //Example of adding new item by cloning existing item using createclonedetails
-        const weaponModCaseItem: NewItemFromCloneDetails = {
+        const weaponModsCaseItem: NewItemFromCloneDetails = {
             itemTplToClone: "5aafbde786f774389d0cbc0f", //the item we want to clone
             overrideProperties: {
                 Width: 3,
@@ -197,7 +198,7 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
             }
         };
 
-        const thiccWeaponModCaseItem: NewItemFromCloneDetails = {
+        const thiccWeaponModsCaseItem: NewItemFromCloneDetails = {
             itemTplToClone: "5aafbde786f774389d0cbc0f", //the item we want to clone
             overrideProperties: {
                 Width: 4,
@@ -304,8 +305,8 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod {
                 }
             }
         };
-        customItemService.createItemFromClone(weaponModCaseItem);
-        customItemService.createItemFromClone(thiccWeaponModCaseItem);
+        customItemService.createItemFromClone(weaponModsCaseItem);
+        customItemService.createItemFromClone(thiccWeaponModsCaseItem);
         customItemService.createItemFromClone(equipmentCaseItem);
 
         this.addAssorts();
