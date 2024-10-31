@@ -1,11 +1,11 @@
 {
     "name": "MoreCases",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "sptVersion": "~3.9",
     "loadBefore": [],
     "loadAfter": [],
     "incompatibilities": [],
-    "isBundleMod": false,
+    "isBundleMod": true,
     "main": "src/mod.js",
     "scripts": {
         "setup": "npm i",
